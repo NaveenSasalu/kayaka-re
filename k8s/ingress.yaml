@@ -6,13 +6,13 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: kayaka.example.com # Change to your domain
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: kayaka-service
-                port:
-                  number: 80
+    #    - host: kayaka.example.com # Change to your domain
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: kayaka-service
+              port:
+                number: 80
