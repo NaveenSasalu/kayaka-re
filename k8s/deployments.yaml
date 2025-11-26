@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kayaka-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kayaka-frontend
+  template:
+    metadata:
+      labels:
+        app: kayaka-frontend
+    spec:
+      containers:
+        - name: kayaka-frontend
+          image: <DOCKER_USERNAME>/kayaka:latest # GitOps replaces this tag automatically
+          ports:
+            - containerPort: 80
