@@ -10,7 +10,7 @@ spec:
     #    - host: kayaka.example.com # Change to your domain
     - http:
         paths:
-          - path: /
+          - path: /kayaka-re
             pathType: Prefix
             backend:
               service:
