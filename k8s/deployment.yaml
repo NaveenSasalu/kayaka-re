@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: kayaka-re
-          image: naveensasalu/kayaka-re:latest # GitOps replaces this tag automatically
+          image: naveensasalu/kayaka-re:6cd07441f1774137068b10a2e8628301b115a87e
           ports:
             - containerPort: 80
