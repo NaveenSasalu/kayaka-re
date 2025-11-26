@@ -1,6 +1,7 @@
 {
-  "name": "my-react",
-  "version": "0.1.0",
+  "name": "kayaka",
+  "version": "1.0.0",
+  "homepage": "/kayaka-re/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
