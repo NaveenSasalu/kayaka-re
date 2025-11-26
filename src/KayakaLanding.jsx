@@ -293,7 +293,7 @@ export default function KayakaLanding() {
           <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
-                src="/images/North_Side.jpeg"
+                src="./images/North_Side.jpeg"
                 alt="North_Side"
                 className="w-full h-64 object-cover rounded"
               />
@@ -315,7 +315,7 @@ export default function KayakaLanding() {
 
             <div className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
-                src="/images/NE_Corner_side.jpeg"
+                src="./images/NE_Corner_side.jpeg"
                 alt="North-East Corner Elevation"
                 className="w-full h-64 object-cover rounded"
               />
