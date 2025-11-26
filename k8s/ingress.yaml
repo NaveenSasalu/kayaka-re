@@ -14,7 +14,7 @@ spec:
           # (2) Match /kayaka-re/
           # (3) Match /kayaka-re/<anything>   → React SPA routing
           - path: /kayaka-re(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: kayaka-service
