@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: kayaka-re
-          image: naveensasalu/kayaka-re:7327e35671cb81861d35532cafb47cdf719f484d
+          image: naveensasalu/kayaka-re:94cbf306dc25637e7554ab60c79381d832e79a75
           ports:
             - containerPort: 80
