@@ -18,7 +18,8 @@ spec:
 
 spec:
   tls:
-   - hosts: re.kaayaka.in
+   - hosts: 
+       - re.kaayaka.in
      secretName: web-tls
 
   rules:
