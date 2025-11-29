@@ -18,11 +18,11 @@ spec:
 
 spec:
   tls:
-   - hosts: re.kayaka.in
+   - hosts: re.kaayaka.in
      secretName: web-tls
 
   rules:
-    - host: re.kayaka.in
+    - host: re.kaayaka.in
       http: 
         paths:
           # (1) Match /kayaka-re
