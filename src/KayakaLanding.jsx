@@ -78,7 +78,7 @@ export default function KayakaLanding() {
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-4xl font-extrabold leading-tight">
-              Kayaka — Commercial & Residential Landmark in AGS Layout
+              Kaayaka — Commercial & Residential Landmark in AGS Layout
             </h2>
             <p className="mt-4 text-gray-600">
               We are pleased to present a premium commercial building available

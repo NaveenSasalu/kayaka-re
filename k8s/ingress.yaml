@@ -3,9 +3,10 @@ kind: Ingress
 metadata:
   name: kayaka-ingress
   annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-http
     kubernetes.io/ingress.class: nginx
     # This rewrites ALL subpaths of /kayaka-re to index.html
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    #nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   tls:
     - hosts:
