@@ -43,7 +43,7 @@ export default function KayakaLanding() {
           <div className="flex items-center gap-4">
             <div className="h-12 w-12 rounded-md bg-gradient-to-br from-indigo-600 to-teal-400 flex items-center justify-center text-white font-bold"></div>
             <div>
-              <h1 className="text-lg font-semibold">Kayaka</h1>
+              <h1 className="text-lg font-semibold">Kaayaka</h1>
               <p className="text-sm text-gray-500">
                 Bengaluru — AGS layout, Manganahalli Main Road
               </p>

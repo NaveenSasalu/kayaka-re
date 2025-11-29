@@ -28,7 +28,7 @@ const Book = () => {
   );
 };
 
-const Title = () => <h2>Planter for Home Decor</h2>;
+const Title = () => <h2>Kaayaka - Real Estate</h2>;
 
 const Image = () => {
   return (
