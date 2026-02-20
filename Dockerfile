@@ -5,7 +5,10 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine
-COPY --from=builder /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:18-alpine
+RUN npm install -g serve
+WORKDIR /app
+COPY --from=builder /app/build ./build
+USER node
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
