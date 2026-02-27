@@ -19,8 +19,8 @@ export default function KayakaLanding() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  const PHONE = "PLACEHOLDER_PHONE"; // Replace with actual phone number (e.g., "919876543210")
-  const EMAIL = "PLACEHOLDER_EMAIL"; // Replace with actual email
+  const PHONE = "919845465200"; // Replace with actual phone number (e.g., "919876543210")
+  const EMAIL = "nkamalas@gmail.com"; // Replace with actual email
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -258,7 +258,9 @@ export default function KayakaLanding() {
             <div className="bg-white p-4 rounded shadow-sm">
               <h4 className="font-semibold mb-2">Ground Floor – 3000 sq ft</h4>
               <div className="w-full h-48 rounded border bg-gray-100 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">Floor plan coming soon</span>
+                <span className="text-gray-400 text-sm">
+                  Floor plan coming soon
+                </span>
               </div>
             </div>
 
@@ -267,7 +269,9 @@ export default function KayakaLanding() {
                 First & Second Floor – 3500 sq ft each
               </h4>
               <div className="w-full h-48 rounded border bg-gray-100 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">Floor plan coming soon</span>
+                <span className="text-gray-400 text-sm">
+                  Floor plan coming soon
+                </span>
               </div>
             </div>
           </div>
