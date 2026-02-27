@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 
-// Kayaka Landing Page - Single File React Component
-// TailwindCSS classes used (assumes Tailwind is configured in the project)
-// Replace image placeholders with real images / renders
-
 export default function KayakaLanding() {
   const [form, setForm] = useState({
     name: "",
@@ -19,23 +15,25 @@ export default function KayakaLanding() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  const PHONE = "919845465200"; // Replace with actual phone number (e.g., "919876543210")
-  const EMAIL = "nkamalas@gmail.com"; // Replace with actual email
+  const PHONE1 = "919845465200";
+  const PHONE2 = "919900568435";
+  const EMAIL = "nkamalas@gmail.com";
+  const [mobileNav, setMobileNav] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     const text = `Hi, I'm interested in Kayaka Real Estate.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AEmail: ${form.email}%0AType: ${form.type}%0AMessage: ${form.message}`;
-    window.open(`https://wa.me/${PHONE}?text=${text}`, "_blank");
+    window.open(`https://wa.me/${PHONE1}?text=${text}`, "_blank");
     setSent(true);
     setForm({ name: "", email: "", phone: "", message: "", type: "Enquiry" });
   }
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      <header className="bg-white shadow">
+      <header className="bg-white shadow sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 rounded-md bg-gradient-to-br from-indigo-600 to-teal-400 flex items-center justify-center text-white font-bold"></div>
+            <img src="./images/kaayaka-logo.jpg" alt="Kaayaka" className="h-12 w-12 rounded-md object-cover" />
             <div>
               <h1 className="text-lg font-semibold">Kaayaka</h1>
               <p className="text-sm text-gray-500">
@@ -44,27 +42,35 @@ export default function KayakaLanding() {
             </div>
           </div>
           <nav className="hidden md:flex gap-6 items-center text-sm">
-            <a href="#about" className="hover:text-indigo-600">
-              About
-            </a>
-            <a href="#amenities" className="hover:text-indigo-600">
-              Amenities
-            </a>
-            <a href="#plans" className="hover:text-indigo-600">
-              Plans
-            </a>
-            <a href="#gallery" className="hover:text-indigo-600">
-              Gallery
-            </a>
-            <a
-              href="#contact"
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md"
-              onClick={() => setShowBooking(true)}
-            >
+            <a href="#about" className="hover:text-indigo-600">About</a>
+            <a href="#amenities" className="hover:text-indigo-600">Amenities</a>
+            <a href="#plans" className="hover:text-indigo-600">Plans</a>
+            <a href="#gallery" className="hover:text-indigo-600">Gallery</a>
+            <a href="#contact" className="px-4 py-2 bg-indigo-600 text-white rounded-md">
               Book / Enquire
             </a>
           </nav>
+          <button
+            className="md:hidden p-2 text-gray-600"
+            onClick={() => setMobileNav(!mobileNav)}
+          >
+            {mobileNav ? "Close" : "Menu"}
+          </button>
         </div>
+        {mobileNav && (
+          <nav className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm border-t">
+            <a href="#about" onClick={() => setMobileNav(false)} className="pt-3">About</a>
+            <a href="#amenities" onClick={() => setMobileNav(false)}>Amenities</a>
+            <a href="#plans" onClick={() => setMobileNav(false)}>Plans</a>
+            <a href="#gallery" onClick={() => setMobileNav(false)}>Gallery</a>
+            <a href="#contact" onClick={() => setMobileNav(false)} className="px-4 py-2 bg-indigo-600 text-white rounded-md text-center">
+              Book / Enquire
+            </a>
+            <a href="tel:+919845465200" className="px-4 py-2 border rounded-md text-center">
+              Call: 98454 65200
+            </a>
+          </nav>
+        )}
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-12">
@@ -75,15 +81,10 @@ export default function KayakaLanding() {
               Kaayaka — Commercial & Residential Landmark in AGS Layout
             </h2>
             <p className="mt-4 text-gray-600">
-              We are pleased to present a premium commercial building available
-              for lease on Manganahalli Main Road — a rapidly growing
-              commercial–residential corridor. With exceptional visibility,
-              three-side road access, and a structurally superior design, this
-              property is well-suited for brands seeking a strong presence in a
-              high-demand location. Strategically designed for maximum frontage,
-              accessibility, and business visibility, this commercial asset
-              stands out as an ideal choice for enterprises looking to establish
-              or expand their footprint in West Bangalore.
+              A premium commercial building on Manganahalli Main Road with
+              exceptional visibility, three-side road access, and post-tensioned
+              construction. Ideal for brands seeking a strong presence in
+              West Bangalore's fastest-growing corridor.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="rounded-lg bg-white p-4 shadow-sm border">
@@ -107,7 +108,7 @@ export default function KayakaLanding() {
                 onClick={() => setShowBooking(true)}
                 className="inline-block px-6 py-3 border rounded-md"
               >
-                Book a Slot
+                Book a Visit
               </button>
             </div>
 
@@ -122,7 +123,6 @@ export default function KayakaLanding() {
           </div>
 
           <div className="rounded-lg overflow-hidden bg-gray-10">
-            {/* Placeholder image - replace with elevation or render */}
             <div className="h-full flex items-center justify-center text-gray-600">
               <img
                 src="./images/NE.jpg"
@@ -227,7 +227,7 @@ export default function KayakaLanding() {
               <li>24/7 CCTV & security</li>
               <li>Loading/unloading area</li>
               <li>Smart locks & access control</li>
-              <li>Fire safety & emergency exits (to be detailed)</li>
+              <li>Fire safety & emergency exits</li>
             </ul>
           </div>
 
@@ -242,7 +242,7 @@ export default function KayakaLanding() {
 
             <div className="mt-4">
               <div className="text-sm text-gray-500">
-                Deliverables (suggested)
+                Available on request
               </div>
               <ul className="list-disc pl-5 text-gray-600 mt-2">
                 <li>Floor plans and carpet layouts</li>
@@ -258,8 +258,8 @@ export default function KayakaLanding() {
         <section id="plans" className="mt-10">
           <h3 className="text-2xl font-semibold">Floor Plans</h3>
           <p className="text-gray-600 mt-2">
-            High‑resolution floor plans for each commercial level and ground
-            floor.
+            Detailed floor plans for each commercial level and ground floor
+            will be available shortly.
           </p>
 
           <div className="mt-6 grid md:grid-cols-2 gap-6">
@@ -340,12 +340,24 @@ export default function KayakaLanding() {
 
           <div className="mt-4 flex flex-wrap gap-3">
             <a
-              href={`https://wa.me/${PHONE}`}
+              href={`https://wa.me/${PHONE1}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-3 bg-green-600 text-white rounded-md inline-flex items-center gap-2"
             >
               WhatsApp Us
+            </a>
+            <a
+              href="tel:+919845465200"
+              className="px-5 py-3 bg-indigo-600 text-white rounded-md inline-flex items-center gap-2"
+            >
+              Call: 98454 65200
+            </a>
+            <a
+              href="tel:+919900568435"
+              className="px-5 py-3 bg-indigo-600 text-white rounded-md inline-flex items-center gap-2"
+            >
+              Call: 99005 68435
             </a>
             <a
               href={`mailto:${EMAIL}?subject=Kayaka%20Real%20Estate%20Enquiry`}
@@ -424,7 +436,7 @@ export default function KayakaLanding() {
               © {new Date().getFullYear()} Kayaka — All rights reserved.
             </div>
             <div>
-              Designed for: AGS Layout, Manganahalli Main Road, Bengaluru
+              AGS Layout, Manganahalli Main Road, Bengaluru
             </div>
           </div>
         </footer>
