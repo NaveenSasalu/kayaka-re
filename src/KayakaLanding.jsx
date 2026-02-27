@@ -197,7 +197,7 @@ export default function KayakaLanding() {
           <h4 className="text-lg font-semibold">Map Location</h4>
           <div className="mt-3 rounded overflow-hidden shadow-sm">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.8!2d77.479681!3d12.951489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU3JzA1LjQiTiA3N8KwMjgnNDYuOSJF!5e1!3m2!1sen!2sin!4v1"
+              src="https://maps.google.com/maps?q=12.951489,77.479681&t=k&z=18&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="300"
               style={{ border: 0 }}
