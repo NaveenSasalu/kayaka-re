@@ -19,21 +19,15 @@ export default function KayakaLanding() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  async function handleSubmit(e) {
+  const PHONE = "PLACEHOLDER_PHONE"; // Replace with actual phone number (e.g., "919876543210")
+  const EMAIL = "PLACEHOLDER_EMAIL"; // Replace with actual email
+
+  function handleSubmit(e) {
     e.preventDefault();
-    // TODO: Replace endpoint with your serverless function or CRM endpoint
-    try {
-      await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, project: "Kayaka" }),
-      });
-      setSent(true);
-      setForm({ name: "", email: "", phone: "", message: "", type: "Enquiry" });
-    } catch (err) {
-      console.error(err);
-      alert("Failed to send. Please try via phone or email.");
-    }
+    const text = `Hi, I'm interested in Kayaka Real Estate.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AEmail: ${form.email}%0AType: ${form.type}%0AMessage: ${form.message}`;
+    window.open(`https://wa.me/${PHONE}?text=${text}`, "_blank");
+    setSent(true);
+    setForm({ name: "", email: "", phone: "", message: "", type: "Enquiry" });
   }
 
   return (
@@ -263,22 +257,18 @@ export default function KayakaLanding() {
           <div className="mt-6 grid md:grid-cols-2 gap-6">
             <div className="bg-white p-4 rounded shadow-sm">
               <h4 className="font-semibold mb-2">Ground Floor – 3000 sq ft</h4>
-              <img
-                src="/mnt/data/GROUND FLOOR LAYOUT.pdf"
-                alt="Ground Floor Plan"
-                className="w-full rounded border"
-              />
+              <div className="w-full h-48 rounded border bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-400 text-sm">Floor plan coming soon</span>
+              </div>
             </div>
 
             <div className="bg-white p-4 rounded shadow-sm">
               <h4 className="font-semibold mb-2">
                 First & Second Floor – 3500 sq ft each
               </h4>
-              <img
-                src="/mnt/data/First and Second Floor plan.pdf"
-                alt="First and Second Floor Plan"
-                className="w-full rounded border"
-              />
+              <div className="w-full h-48 rounded border bg-gray-100 flex items-center justify-center">
+                <span className="text-gray-400 text-sm">Floor plan coming soon</span>
+              </div>
             </div>
           </div>
         </section>
@@ -333,9 +323,25 @@ export default function KayakaLanding() {
         >
           <h3 className="text-2xl font-semibold">Enquire / Book a Visit</h3>
           <p className="text-gray-600 mt-2">
-            Fill the form and our sales team will contact you. For urgent
-            queries call +91-XXXXXXXXXX
+            Fill the form to send us a WhatsApp message, or reach out directly.
           </p>
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a
+              href={`https://wa.me/${PHONE}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 bg-green-600 text-white rounded-md inline-flex items-center gap-2"
+            >
+              WhatsApp Us
+            </a>
+            <a
+              href={`mailto:${EMAIL}?subject=Kayaka%20Real%20Estate%20Enquiry`}
+              className="px-5 py-3 bg-gray-700 text-white rounded-md inline-flex items-center gap-2"
+            >
+              Email Us
+            </a>
+          </div>
 
           <form
             onSubmit={handleSubmit}
@@ -387,13 +393,13 @@ export default function KayakaLanding() {
             <div className="md:col-span-2 flex gap-3 items-center">
               <button
                 type="submit"
-                className="px-6 py-3 bg-indigo-600 text-white rounded-md"
+                className="px-6 py-3 bg-green-600 text-white rounded-md"
               >
-                Send Enquiry
+                Send via WhatsApp
               </button>
               {sent && (
                 <span className="text-sm text-green-600">
-                  Thanks — we will contact you shortly!
+                  Opening WhatsApp...
                 </span>
               )}
             </div>
@@ -477,9 +483,9 @@ export default function KayakaLanding() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-indigo-600 text-white rounded"
+                  className="px-4 py-2 bg-green-600 text-white rounded"
                 >
-                  Submit
+                  Send via WhatsApp
                 </button>
               </div>
             </form>
