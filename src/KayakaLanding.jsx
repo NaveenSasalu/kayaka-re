@@ -77,7 +77,7 @@ export default function KayakaLanding() {
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-4xl font-extrabold leading-tight">
-              Kaayaka — Commercial & Residential Landmark in SMV Layout
+              Kaayaka — Premium Commercial Space in SMV Layout
             </h2>
             <p className="mt-4 text-gray-600">
               A premium commercial building on Manganahalli Main Road with
@@ -140,13 +140,11 @@ export default function KayakaLanding() {
           <div className="mt-4 grid md:grid-cols-2 gap-6">
             <div>
               <p className="text-gray-700">
-                Kayaka is a five-floor mixed use building (including a basement
-                for parking) located in the prominent Sir M. Vishweshwaraiah
-                Layout (SMV Layout) by BDA, on Manganahalli Main Road, Bengaluru.
-                With three dedicated commercial floors, a spacious residential
-                house, and modern structural design using post-tensioning, Kayaka
-                offers flexibility for large-format retail, offices and an
-                exclusive residence.
+                Kayaka offers three dedicated commercial floors with basement
+                parking, located in the prominent Sir M. Vishweshwaraiah Layout
+                (SMV Layout) by BDA, on Manganahalli Main Road, Bengaluru.
+                Modern post-tensioned construction provides large column-free
+                spaces ideal for retail, showrooms, and offices.
               </p>
 
               <ul className="mt-4 space-y-2 text-gray-600">
@@ -155,9 +153,9 @@ export default function KayakaLanding() {
                   South 45 ft visibility
                 </li>
                 <li>
-                  <strong>Nearby:</strong> Upcoming 30-floor premium apartment
-                  (~800m away), large CA site (~30,000 sq ft), 200-bed
-                  government hospital, high-street brands within 100–900 meters
+                  <strong>Nearby:</strong> 80,000 sq ft BDA park across the road,
+                  upcoming 30-floor twin-tower apartment (~800m), upcoming park on
+                  adjacent 30,000 sq ft CA site, 200-bed government hospital
                 </li>
                 <li>
                   <strong>Access:</strong> Within 500 meters of the 100 ft
@@ -179,16 +177,6 @@ export default function KayakaLanding() {
                 </ul>
               </div>
 
-              <div className="rounded border p-4 bg-gray-50 mt-4">
-                <h4 className="font-semibold">Residential Highlights</h4>
-                <ul className="mt-2 list-disc pl-5 text-gray-600 space-y-1">
-                  <li>Single 3600 sq ft house with private access</li>
-                  <li>
-                    Primary lift, security, CCTV and modern smart home features
-                  </li>
-                  <li>Solar power and power backup planned</li>
-                </ul>
-              </div>
             </div>
           </div>
         </section>
@@ -228,7 +216,7 @@ export default function KayakaLanding() {
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">30-Floor</div>
-              <div className="text-sm text-gray-600 mt-1">Premium apartment coming up ~800m away</div>
+              <div className="text-sm text-gray-600 mt-1">Twin-tower premium apartment coming up ~800m away</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">200-Bed</div>
@@ -240,15 +228,32 @@ export default function KayakaLanding() {
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">30,000 ft²</div>
-              <div className="text-sm text-gray-600 mt-1">Large CA site adjacent</div>
+              <div className="text-sm text-gray-600 mt-1">Upcoming park on adjacent CA site</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">3+</div>
-              <div className="text-sm text-gray-600 mt-1">Top schools nearby — Vidyanikethan, Chaitanya, Agastya</div>
+              <div className="text-sm text-gray-600 mt-1">Top schools — Vidyanikethan, Chaitanya, Agastya</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
-              <div className="text-2xl font-bold text-indigo-600">High</div>
-              <div className="text-sm text-gray-600 mt-1">Daily foot traffic from schools, hospital & residential areas</div>
+              <div className="text-2xl font-bold text-indigo-600">80,000 ft²</div>
+              <div className="text-sm text-gray-600 mt-1">BDA public park across the road</div>
+            </div>
+          </div>
+
+          <div className="mt-6 grid md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-lg p-4 shadow-sm border">
+              <h4 className="font-semibold text-gray-700">Dining & Entertainment</h4>
+              <p className="text-sm text-gray-600 mt-2">
+                Domino's, Pizza Hut, Nandhini, Samruddi, Krishna Aramane,
+                Suka, The Soda Factory — all within the neighbourhood.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm border">
+              <h4 className="font-semibold text-gray-700">Established Brands on This Road</h4>
+              <p className="text-sm text-gray-600 mt-2">
+                Zudio, Harsha Electricals, Honda and TVS two-wheeler showrooms
+                — proven commercial demand on Manganahalli Main Road.
+              </p>
             </div>
           </div>
         </section>
@@ -258,13 +263,10 @@ export default function KayakaLanding() {
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <h4 className="text-xl font-semibold">Amenities & Facilities</h4>
             <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600">
-              <li>Basement parking (4800 sq ft)</li>
+              <li>Basement parking</li>
               <li>2 Lifts (Primary + Commercial)</li>
               <li>Power backup & Solar provision</li>
               <li>24/7 CCTV & security</li>
-              <li>Loading/unloading area</li>
-              <li>Smart locks & access control</li>
-              <li>Fire safety & emergency exits</li>
             </ul>
           </div>
 
@@ -439,7 +441,6 @@ export default function KayakaLanding() {
             >
               <option>Enquiry</option>
               <option>Book Visit</option>
-              <option>Request Brochure</option>
             </select>
             <textarea
               name="message"
