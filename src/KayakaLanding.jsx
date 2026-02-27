@@ -225,7 +225,7 @@ export default function KayakaLanding() {
             BDA) — one of West Bangalore's most sought-after residential and
             commercial corridors.
           </p>
-          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">30-Floor</div>
               <div className="text-sm text-gray-600 mt-1">Premium apartment coming up ~800m away</div>
@@ -241,6 +241,14 @@ export default function KayakaLanding() {
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">30,000 ft²</div>
               <div className="text-sm text-gray-600 mt-1">Large CA site adjacent</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
+              <div className="text-2xl font-bold text-indigo-600">3+</div>
+              <div className="text-sm text-gray-600 mt-1">Top schools nearby — Vidyanikethan, Chaitanya, Agastya</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
+              <div className="text-2xl font-bold text-indigo-600">High</div>
+              <div className="text-sm text-gray-600 mt-1">Daily foot traffic from schools, hospital & residential areas</div>
             </div>
           </div>
         </section>
