@@ -16,7 +16,7 @@ export default function KayakaLanding() {
   }
 
   const PHONE1 = "919845465200";
-  const PHONE2 = "919900568435";
+  const PHONE2 = "919886366691";
   const EMAIL = "nkamalas@gmail.com";
   const [mobileNav, setMobileNav] = useState(false);
 
@@ -89,7 +89,7 @@ export default function KayakaLanding() {
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="rounded-lg bg-white p-4 shadow-sm border">
                 <div className="text-sm text-gray-400">Commercial Carpet</div>
-                <div className="font-semibold">Ground - 3000 sq ft</div>
+                <div className="font-semibold">Ground - 3100 sq ft</div>
                 <div className="font-semibold">1st/2nd - 3500 sq ft each</div>
               </div>
               <div className="rounded-lg bg-white p-4 shadow-sm border">
@@ -134,7 +134,7 @@ export default function KayakaLanding() {
         </section>
 
         {/* About / Location */}
-        <section id="about" className="mt-12 bg-white rounded-lg p-6 shadow-sm">
+        <section id="about" className="scroll-mt-20 mt-12 bg-white rounded-lg p-6 shadow-sm">
           <h3 className="text-2xl font-semibold">
             Project Overview & Location
           </h3>
@@ -247,7 +247,7 @@ export default function KayakaLanding() {
         </section>
 
         {/* Amenities */}
-        <section id="amenities" className="mt-8 grid md:grid-cols-2 gap-6">
+        <section id="amenities" className="scroll-mt-20 mt-8 grid md:grid-cols-2 gap-6">
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <h4 className="text-xl font-semibold">Amenities & Facilities</h4>
             <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600">
@@ -285,7 +285,7 @@ export default function KayakaLanding() {
         </section>
 
         {/* Floor Plans */}
-        <section id="plans" className="mt-10">
+        <section id="plans" className="scroll-mt-20 mt-10">
           <h3 className="text-2xl font-semibold">Floor Plans</h3>
           <p className="text-gray-600 mt-2">
             Floor plans for each commercial level and ground floor.
@@ -293,7 +293,7 @@ export default function KayakaLanding() {
 
           <div className="mt-6 grid md:grid-cols-2 gap-6">
             <div className="bg-white p-4 rounded shadow-sm">
-              <h4 className="font-semibold mb-2">Ground Floor – 3000 sq ft</h4>
+              <h4 className="font-semibold mb-2">Ground Floor – 3100 sq ft</h4>
               <img
                 src={`${process.env.PUBLIC_URL}/images/ground_floor_plan.jpg`}
                 alt="Ground Floor Plan"
@@ -315,7 +315,7 @@ export default function KayakaLanding() {
         </section>
 
         {/* Gallery */}
-        <section id="gallery" className="mt-10">
+        <section id="gallery" className="scroll-mt-20 mt-10">
           <h3 className="text-2xl font-semibold">Gallery</h3>
           <p className="text-gray-600 mt-2">
             Elevation views of Kayaka — North, East, and NE Corner perspectives.
@@ -360,7 +360,7 @@ export default function KayakaLanding() {
         {/* Contact / Lead Capture */}
         <section
           id="contact"
-          className="mt-10 bg-white rounded-lg p-6 shadow-sm"
+          className="scroll-mt-20 mt-10 bg-white rounded-lg p-6 shadow-sm"
         >
           <h3 className="text-2xl font-semibold">Enquire / Book a Visit</h3>
           <p className="text-gray-600 mt-2">
@@ -377,22 +377,22 @@ export default function KayakaLanding() {
               WhatsApp Us
             </a>
             <a
+              href={`mailto:${EMAIL}?subject=Kayaka%20Real%20Estate%20Enquiry`}
+              className="px-5 py-3 bg-gray-700 text-white rounded-md inline-flex items-center gap-2"
+            >
+              Email Us
+            </a>
+            <a
               href="tel:+919845465200"
               className="px-5 py-3 bg-indigo-600 text-white rounded-md inline-flex items-center gap-2"
             >
               Call: 98454 65200
             </a>
             <a
-              href="tel:+919900568435"
+              href="tel:+919886366691"
               className="px-5 py-3 bg-indigo-600 text-white rounded-md inline-flex items-center gap-2"
             >
-              Call: 99005 68435
-            </a>
-            <a
-              href={`mailto:${EMAIL}?subject=Kayaka%20Real%20Estate%20Enquiry`}
-              className="px-5 py-3 bg-gray-700 text-white rounded-md inline-flex items-center gap-2"
-            >
-              Email Us
+              Call: 98863 66691
             </a>
           </div>
 
@@ -459,8 +459,32 @@ export default function KayakaLanding() {
           </form>
         </section>
 
-        <footer className="mt-12 text-sm text-gray-500 text-center">
-          © {new Date().getFullYear()} Kayaka — All rights reserved.
+        <footer className="mt-12 border-t pt-6 pb-4 text-sm text-gray-500">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <div className="font-semibold text-gray-700">Kaayaka</div>
+              <div className="mt-1">SMV Layout (AGS), Manganahalli Main Road, Bengaluru</div>
+            </div>
+            <div>
+              <div className="font-semibold text-gray-700">Contact</div>
+              <div className="mt-1 space-y-1">
+                <div><a href="tel:+919845465200" className="hover:text-indigo-600">+91 98454 65200</a></div>
+                <div><a href="tel:+919886366691" className="hover:text-indigo-600">+91 98863 66691</a></div>
+                <div><a href={`mailto:${EMAIL}`} className="hover:text-indigo-600">{EMAIL}</a></div>
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-gray-700">Quick Links</div>
+              <div className="mt-1 space-y-1">
+                <div><a href="#about" className="hover:text-indigo-600">About</a></div>
+                <div><a href="#plans" className="hover:text-indigo-600">Floor Plans</a></div>
+                <div><a href="#contact" className="hover:text-indigo-600">Contact Us</a></div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-6 text-center text-gray-400">
+            © {new Date().getFullYear()} Kayaka — All rights reserved.
+          </div>
         </footer>
       </main>
 
