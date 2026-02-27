@@ -206,6 +206,14 @@ export default function KayakaLanding() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=12.951489,77.479681"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block px-5 py-2 bg-indigo-600 text-white rounded-md text-sm"
+          >
+            Get Directions
+          </a>
         </section>
 
         {/* Amenities */}
