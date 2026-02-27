@@ -37,7 +37,7 @@ export default function KayakaLanding() {
             <div>
               <h1 className="text-lg font-semibold">Kaayaka</h1>
               <p className="text-sm text-gray-500">
-                Bengaluru — AGS layout, Manganahalli Main Road
+                Bengaluru — SMV Layout (AGS), Manganahalli Main Road
               </p>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function KayakaLanding() {
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-4xl font-extrabold leading-tight">
-              Kaayaka — Commercial & Residential Landmark in AGS Layout
+              Kaayaka — Commercial & Residential Landmark in SMV Layout
             </h2>
             <p className="mt-4 text-gray-600">
               A premium commercial building on Manganahalli Main Road with
@@ -117,7 +117,7 @@ export default function KayakaLanding() {
                 Post-tensioned construction — large clear spans, minimal columns
               </li>
               <li>Clear height: 10.5 ft</li>
-              <li>Three-sided road exposure, 51 ft northern frontage</li>
+              <li>North 51 ft, East 100 ft, South 45 ft road frontage</li>
               <li>Close to major retail & food brands and hospital</li>
             </ul>
           </div>
@@ -142,22 +142,23 @@ export default function KayakaLanding() {
             <div>
               <p className="text-gray-700">
                 Kayaka is a five-floor mixed use building (including a basement
-                for parking) strategically located on Manganahalli Main Road in
-                AGS Layout, Bengaluru. With three dedicated commercial floors, a
-                spacious residential house, and modern structural design using
-                post-tensioning, Kayaka offers flexibility for large-format
-                retail, offices and an exclusive residence.
+                for parking) located in the prominent Sir M. Vishweshwaraiah
+                Layout (SMV Layout) by BDA, on Manganahalli Main Road, Bengaluru.
+                With three dedicated commercial floors, a spacious residential
+                house, and modern structural design using post-tensioning, Kayaka
+                offers flexibility for large-format retail, offices and an
+                exclusive residence.
               </p>
 
               <ul className="mt-4 space-y-2 text-gray-600">
                 <li>
-                  <strong>Road frontage:</strong> North side 51 ft, East 100 ft,
-                  other sides 40 ft & 30 ft roads
+                  <strong>Road frontage:</strong> North 51 ft, East 100 ft,
+                  South 45 ft visibility
                 </li>
                 <li>
-                  <strong>Nearby:</strong> Large CA site (~30,000 sq ft),
-                  200-bed government hospital, high-street brands within 100–900
-                  meters
+                  <strong>Nearby:</strong> Upcoming 30-floor premium apartment
+                  (~800m away), large CA site (~30,000 sq ft), 200-bed
+                  government hospital, high-street brands within 100–900 meters
                 </li>
                 <li>
                   <strong>Access:</strong> Within 500 meters of the 100 ft
@@ -175,6 +176,7 @@ export default function KayakaLanding() {
                     Dedicated commercial lift & service areas for
                     loading/unloading
                   </li>
+                  <li>Option for dedicated lift access for single-tenant floors</li>
                 </ul>
               </div>
 
@@ -214,6 +216,34 @@ export default function KayakaLanding() {
           >
             Get Directions
           </a>
+        </section>
+
+        {/* Neighbourhood */}
+        <section className="mt-10">
+          <h3 className="text-2xl font-semibold">Neighbourhood & Growth</h3>
+          <p className="text-gray-600 mt-2">
+            Located in the heart of Sir M. Vishweshwaraiah Layout (SMV Layout,
+            BDA) — one of West Bangalore's most sought-after residential and
+            commercial corridors.
+          </p>
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
+              <div className="text-2xl font-bold text-indigo-600">30-Floor</div>
+              <div className="text-sm text-gray-600 mt-1">Premium apartment coming up ~800m away</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
+              <div className="text-2xl font-bold text-indigo-600">200-Bed</div>
+              <div className="text-sm text-gray-600 mt-1">Government hospital nearby</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
+              <div className="text-2xl font-bold text-indigo-600">100 ft</div>
+              <div className="text-sm text-gray-600 mt-1">Connector road to Mysore & Magadi Road within 500m</div>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
+              <div className="text-2xl font-bold text-indigo-600">30,000 ft²</div>
+              <div className="text-sm text-gray-600 mt-1">Large CA site adjacent</div>
+            </div>
+          </div>
         </section>
 
         {/* Amenities */}
@@ -429,15 +459,8 @@ export default function KayakaLanding() {
           </form>
         </section>
 
-        <footer className="mt-12 text-sm text-gray-500">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-              © {new Date().getFullYear()} Kayaka — All rights reserved.
-            </div>
-            <div>
-              AGS Layout, Manganahalli Main Road, Bengaluru
-            </div>
-          </div>
+        <footer className="mt-12 text-sm text-gray-500 text-center">
+          © {new Date().getFullYear()} Kayaka — All rights reserved.
         </footer>
       </main>
 
