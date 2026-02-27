@@ -33,7 +33,7 @@ export default function KayakaLanding() {
       <header className="bg-white shadow sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src="./images/kaayaka-logo.jpg" alt="Kaayaka" className="h-12 w-12 rounded-md object-cover" />
+            <img src={`${process.env.PUBLIC_URL}/images/kaayaka-logo.jpg`} alt="Kaayaka" className="h-12 w-12 rounded-md object-cover" />
             <div>
               <h1 className="text-lg font-semibold">Kaayaka</h1>
               <p className="text-sm text-gray-500">
@@ -125,7 +125,7 @@ export default function KayakaLanding() {
           <div className="rounded-lg overflow-hidden bg-gray-10">
             <div className="h-full flex items-center justify-center text-gray-600">
               <img
-                src="./images/NE.jpg"
+                src={`${process.env.PUBLIC_URL}/images/NE.jpg`}
                 alt="North-East Corner Elevation"
                 className="w-full h-full"
               />
@@ -258,29 +258,28 @@ export default function KayakaLanding() {
         <section id="plans" className="mt-10">
           <h3 className="text-2xl font-semibold">Floor Plans</h3>
           <p className="text-gray-600 mt-2">
-            Detailed floor plans for each commercial level and ground floor
-            will be available shortly.
+            Floor plans for each commercial level and ground floor.
           </p>
 
           <div className="mt-6 grid md:grid-cols-2 gap-6">
             <div className="bg-white p-4 rounded shadow-sm">
               <h4 className="font-semibold mb-2">Ground Floor – 3000 sq ft</h4>
-              <div className="w-full h-48 rounded border bg-gray-100 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">
-                  Floor plan coming soon
-                </span>
-              </div>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/ground_floor_plan.jpg`}
+                alt="Ground Floor Plan"
+                className="w-full rounded border"
+              />
             </div>
 
             <div className="bg-white p-4 rounded shadow-sm">
               <h4 className="font-semibold mb-2">
                 First & Second Floor – 3500 sq ft each
               </h4>
-              <div className="w-full h-48 rounded border bg-gray-100 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">
-                  Floor plan coming soon
-                </span>
-              </div>
+              <img
+                src={`${process.env.PUBLIC_URL}/images/first_second_floor.jpg`}
+                alt="First and Second Floor Plan"
+                className="w-full rounded border"
+              />
             </div>
           </div>
         </section>
@@ -295,7 +294,7 @@ export default function KayakaLanding() {
           <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
-                src="./images/North_Side.jpeg"
+                src={`${process.env.PUBLIC_URL}/images/North_Side.jpeg`}
                 alt="North_Side"
                 className="w-full h-64 object-cover rounded"
               />
@@ -306,7 +305,7 @@ export default function KayakaLanding() {
 
             <div className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
-                src="./images/East_Side.jpeg"
+                src={`${process.env.PUBLIC_URL}/images/East_Side.jpeg`}
                 alt="East_Side"
                 className="w-full h-64 object-cover rounded"
               />
@@ -317,7 +316,7 @@ export default function KayakaLanding() {
 
             <div className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
-                src="./images/NE_Corner_side.jpeg"
+                src={`${process.env.PUBLIC_URL}/images/NE_Corner_side.jpeg`}
                 alt="North-East Corner Elevation"
                 className="w-full h-64 object-cover rounded"
               />
