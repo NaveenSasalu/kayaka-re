@@ -33,7 +33,6 @@ export default function KayakaLanding() {
       <header className="bg-white shadow sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <img src={`${process.env.PUBLIC_URL}/images/kaayaka-logo.jpg`} alt="Kaayaka" className="h-12 w-12 rounded-md object-cover" />
             <div>
               <h1 className="text-lg font-semibold">Kaayaka</h1>
               <p className="text-sm text-gray-500">
