@@ -1,31 +1,234 @@
 import React, { useState } from "react";
 
+const FLOOR_OPTIONS = [
+  "Not sure yet",
+  "Ground floor (3100 sq ft)",
+  "First floor (3500 sq ft)",
+  "Second floor (3500 sq ft)",
+  "Multiple floors",
+];
+
+function FormFields({ form, onChange, idPrefix, showType, showVisitDate }) {
+  return (
+    <>
+      <div>
+        <label
+          htmlFor={`${idPrefix}-name`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Full name
+        </label>
+        <input
+          id={`${idPrefix}-name`}
+          name="name"
+          type="text"
+          value={form.name}
+          onChange={onChange}
+          autoComplete="name"
+          className="w-full p-3 border rounded"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor={`${idPrefix}-phone`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Phone
+        </label>
+        <input
+          id={`${idPrefix}-phone`}
+          name="phone"
+          type="tel"
+          value={form.phone}
+          onChange={onChange}
+          autoComplete="tel"
+          className="w-full p-3 border rounded"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor={`${idPrefix}-email`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Email
+        </label>
+        <input
+          id={`${idPrefix}-email`}
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={onChange}
+          autoComplete="email"
+          className="w-full p-3 border rounded"
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor={`${idPrefix}-business`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Your business / intended use
+        </label>
+        <input
+          id={`${idPrefix}-business`}
+          name="business"
+          type="text"
+          value={form.business}
+          onChange={onChange}
+          autoComplete="organization"
+          placeholder="e.g. Retail showroom, clinic, restaurant"
+          className="w-full p-3 border rounded"
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor={`${idPrefix}-floor`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Floor of interest
+        </label>
+        <select
+          id={`${idPrefix}-floor`}
+          name="floor"
+          value={form.floor}
+          onChange={onChange}
+          autoComplete="off"
+          className="w-full p-3 border rounded"
+        >
+          {FLOOR_OPTIONS.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {showType && (
+        <div>
+          <label
+            htmlFor={`${idPrefix}-type`}
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            I'm looking to
+          </label>
+          <select
+            id={`${idPrefix}-type`}
+            name="type"
+            value={form.type}
+            onChange={onChange}
+            autoComplete="off"
+            className="w-full p-3 border rounded"
+          >
+            <option value="Leasing enquiry">Leasing enquiry</option>
+            <option value="Book a site visit">Book a site visit</option>
+          </select>
+        </div>
+      )}
+
+      {showVisitDate && (
+        <div>
+          <label
+            htmlFor={`${idPrefix}-visitDate`}
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Preferred visit date
+          </label>
+          <input
+            id={`${idPrefix}-visitDate`}
+            name="visitDate"
+            type="date"
+            value={form.visitDate}
+            onChange={onChange}
+            autoComplete="off"
+            className="w-full p-3 border rounded"
+          />
+        </div>
+      )}
+
+      <div className="md:col-span-2">
+        <label
+          htmlFor={`${idPrefix}-message`}
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Message / Requirements
+        </label>
+        <textarea
+          id={`${idPrefix}-message`}
+          name="message"
+          value={form.message}
+          onChange={onChange}
+          autoComplete="off"
+          rows={4}
+          className="w-full p-3 border rounded"
+        />
+      </div>
+    </>
+  );
+}
+
+const INITIAL_FORM = {
+  name: "",
+  phone: "",
+  email: "",
+  business: "",
+  floor: "Not sure yet",
+  visitDate: "",
+  message: "",
+  type: "Leasing enquiry",
+};
+
 export default function KayakaLanding() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-    type: "Enquiry",
-  });
+  const [form, setForm] = useState(INITIAL_FORM);
   const [showBooking, setShowBooking] = useState(false);
   const [sent, setSent] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
+
+  const PHONE1 = "919845465200";
+  const PHONE2 = "919886366691";
+  const EMAIL = "nkamalas@gmail.com";
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  const PHONE1 = "919845465200";
-  const PHONE2 = "919886366691";
-  const EMAIL = "nkamalas@gmail.com";
-  const [mobileNav, setMobileNav] = useState(false);
+  function openBooking() {
+    setForm((prev) => ({ ...prev, type: "Book a site visit" }));
+    setShowBooking(true);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const text = `Hi, I'm interested in Kayaka Real Estate.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AEmail: ${form.email}%0AType: ${form.type}%0AMessage: ${form.message}`;
-    window.open(`https://wa.me/${PHONE1}?text=${text}`, "_blank");
-    setSent(true);
-    setForm({ name: "", email: "", phone: "", message: "", type: "Enquiry" });
+
+    const lines = [
+      "Hi, I'm interested in leasing the commercial space on Manganahalli Main Road (SMV Layout).",
+      "",
+      `Name: ${form.name}`,
+      `Phone: ${form.phone}`,
+      form.email && `Email: ${form.email}`,
+      `Enquiry type: ${form.type}`,
+      form.business && `Business / intended use: ${form.business}`,
+      `Floor of interest: ${form.floor}`,
+      form.visitDate && `Preferred visit date: ${form.visitDate}`,
+      form.message && `Message: ${form.message}`,
+    ].filter(Boolean);
+
+    const whatsappUrl = `https://wa.me/${PHONE1}?text=${encodeURIComponent(
+      lines.join("\n")
+    )}`;
+
+    const newWindow = window.open(whatsappUrl, "_blank");
+    if (!newWindow) {
+      window.location.href = whatsappUrl;
+    } else {
+      setSent(true);
+    }
+    setForm(INITIAL_FORM);
   }
 
   return (
@@ -34,9 +237,9 @@ export default function KayakaLanding() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div>
-              <h1 className="text-lg font-semibold">Kaayaka</h1>
+              <div className="text-lg font-semibold">Commercial Space for Lease</div>
               <p className="text-sm text-gray-500">
-                Bengaluru — SMV Layout (AGS), Manganahalli Main Road
+                SMV Layout (BDA), Manganahalli Main Road, Bengaluru
               </p>
             </div>
           </div>
@@ -46,26 +249,28 @@ export default function KayakaLanding() {
             <a href="#plans" className="hover:text-indigo-600">Plans</a>
             <a href="#gallery" className="hover:text-indigo-600">Gallery</a>
             <a href="#contact" className="px-4 py-2 bg-indigo-600 text-white rounded-md">
-              Book / Enquire
+              Enquire / Visit
             </a>
           </nav>
           <button
             className="md:hidden p-2 text-gray-600"
             onClick={() => setMobileNav(!mobileNav)}
+            aria-expanded={mobileNav}
+            aria-controls="mobile-menu"
           >
             {mobileNav ? "Close" : "Menu"}
           </button>
         </div>
         {mobileNav && (
-          <nav className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm border-t">
+          <nav id="mobile-menu" className="md:hidden px-4 pb-4 flex flex-col gap-3 text-sm border-t">
             <a href="#about" onClick={() => setMobileNav(false)} className="pt-3">About</a>
             <a href="#amenities" onClick={() => setMobileNav(false)}>Amenities</a>
             <a href="#plans" onClick={() => setMobileNav(false)}>Plans</a>
             <a href="#gallery" onClick={() => setMobileNav(false)}>Gallery</a>
             <a href="#contact" onClick={() => setMobileNav(false)} className="px-4 py-2 bg-indigo-600 text-white rounded-md text-center">
-              Book / Enquire
+              Enquire / Visit
             </a>
-            <a href="tel:+919845465200" className="px-4 py-2 border rounded-md text-center">
+            <a href={`tel:+${PHONE1}`} className="px-4 py-2 border rounded-md text-center">
               Call: 98454 65200
             </a>
           </nav>
@@ -75,15 +280,18 @@ export default function KayakaLanding() {
       <main className="max-w-7xl mx-auto px-6 py-12">
         {/* HERO */}
         <section className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-4xl font-extrabold leading-tight">
-              Kaayaka — Premium Commercial Space in SMV Layout
-            </h2>
+          <div className="order-2 md:order-1">
+            <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-green-100 text-green-700 rounded-full">
+              Available for lease
+            </span>
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight">
+              Premium Commercial Space on Manganahalli Main Road
+            </h1>
             <p className="mt-4 text-gray-600">
-              A premium commercial building on Manganahalli Main Road with
-              exceptional visibility, three-side road access, and post-tensioned
-              construction. Ideal for brands seeking a strong presence in
-              West Bangalore's fastest-growing corridor.
+              A new commercial building on Manganahalli Main Road in SMV
+              Layout (BDA), with three-side road frontage and column-free
+              floors — ideal for retail, showrooms, clinics, restaurants and
+              offices.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="rounded-lg bg-white p-4 shadow-sm border">
@@ -104,10 +312,10 @@ export default function KayakaLanding() {
                 Enquire Now
               </a>
               <button
-                onClick={() => setShowBooking(true)}
+                onClick={openBooking}
                 className="inline-block px-6 py-3 border rounded-md"
               >
-                Book a Visit
+                Book a Site Visit
               </button>
             </div>
 
@@ -121,11 +329,14 @@ export default function KayakaLanding() {
             </ul>
           </div>
 
-          <div className="rounded-lg overflow-hidden bg-gray-10">
+          <div className="order-1 md:order-2 rounded-lg overflow-hidden bg-gray-10">
             <div className="h-full flex items-center justify-center text-gray-600">
               <img
                 src={`${process.env.PUBLIC_URL}/images/NE.jpg`}
-                alt="North-East Corner Elevation"
+                alt="North-east corner elevation of the commercial building on Manganahalli Main Road, SMV Layout"
+                width={1156}
+                height={900}
+                fetchPriority="high"
                 className="w-full h-full"
               />
             </div>
@@ -134,17 +345,17 @@ export default function KayakaLanding() {
 
         {/* About / Location */}
         <section id="about" className="scroll-mt-20 mt-12 bg-white rounded-lg p-6 shadow-sm">
-          <h3 className="text-2xl font-semibold">
-            Project Overview & Location
-          </h3>
+          <h2 className="text-2xl font-semibold">
+            Property Overview & Location
+          </h2>
           <div className="mt-4 grid md:grid-cols-2 gap-6">
             <div>
               <p className="text-gray-700">
-                Kayaka offers three dedicated commercial floors with basement
-                parking, located in the prominent Sir M. Vishweshwaraiah Layout
-                (SMV Layout) by BDA, on Manganahalli Main Road, Bengaluru.
-                Modern post-tensioned construction provides large column-free
-                spaces ideal for retail, showrooms, and offices.
+                This property offers three dedicated commercial floors with
+                basement parking, located in the prominent Sir M. Visvesvaraya
+                Layout (SMV Layout) by BDA, on Manganahalli Main Road,
+                Bengaluru. Modern post-tensioned construction provides large
+                column-free spaces ideal for retail, showrooms, and offices.
               </p>
 
               <ul className="mt-4 space-y-2 text-gray-600">
@@ -165,7 +376,7 @@ export default function KayakaLanding() {
             </div>
             <div>
               <div className="rounded border p-4 bg-gray-50">
-                <h4 className="font-semibold">Key Commercial Selling Points</h4>
+                <h3 className="font-semibold">Why businesses choose this location</h3>
                 <ul className="mt-2 list-disc pl-5 text-gray-600 space-y-1">
                   <li>Large open-plan spaces due to post-tension system</li>
                   <li>High visibility: multiple road frontages</li>
@@ -174,6 +385,7 @@ export default function KayakaLanding() {
                     loading/unloading
                   </li>
                   <li>Option for dedicated lift access for single-tenant floors</li>
+                  <li>Lease a single floor or multiple floors</li>
                 </ul>
               </div>
 
@@ -183,9 +395,10 @@ export default function KayakaLanding() {
 
         {/* Google Map */}
         <section className="mt-6">
-          <h4 className="text-lg font-semibold">Map Location</h4>
+          <h3 className="text-lg font-semibold">Map Location</h3>
           <div className="mt-3 rounded overflow-hidden shadow-sm">
             <iframe
+              title="Map showing the location of the commercial space on Manganahalli Main Road"
               src="https://maps.google.com/maps?q=12.951489,77.479681&t=k&z=18&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="300"
@@ -207,16 +420,16 @@ export default function KayakaLanding() {
 
         {/* Neighbourhood */}
         <section className="mt-10">
-          <h3 className="text-2xl font-semibold">Neighbourhood & Growth</h3>
+          <h2 className="text-2xl font-semibold">Neighbourhood & Growth</h2>
           <p className="text-gray-600 mt-2">
-            Located in the heart of Sir M. Vishweshwaraiah Layout (SMV Layout,
-            BDA) — one of West Bangalore's most sought-after residential and
-            commercial corridors.
+            Located in the heart of Sir M. Visvesvaraya Layout (SMV Layout,
+            BDA) — one of West Bangalore's fastest-growing commercial
+            corridors.
           </p>
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">30-Floor</div>
-              <div className="text-sm text-gray-600 mt-1">Twin-tower premium apartment coming up ~800m away</div>
+              <div className="text-sm text-gray-600 mt-1">Upcoming twin towers ~800 m away — a growing customer catchment</div>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border text-center">
               <div className="text-2xl font-bold text-indigo-600">200-Bed</div>
@@ -242,14 +455,14 @@ export default function KayakaLanding() {
 
           <div className="mt-6 grid md:grid-cols-2 gap-4">
             <div className="bg-white rounded-lg p-4 shadow-sm border">
-              <h4 className="font-semibold text-gray-700">Dining & Entertainment</h4>
+              <h3 className="font-semibold text-gray-700">Dining & Entertainment</h3>
               <p className="text-sm text-gray-600 mt-2">
                 Domino's, Pizza Hut, Nandhini, Samruddi, Krishna Aramane,
                 Suka, The Soda Factory — all within the neighbourhood.
               </p>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border">
-              <h4 className="font-semibold text-gray-700">Established Brands on This Road</h4>
+              <h3 className="font-semibold text-gray-700">Established Brands on This Road</h3>
               <p className="text-sm text-gray-600 mt-2">
                 Zudio, Harsha Electricals, Honda and TVS two-wheeler showrooms
                 — proven commercial demand on Manganahalli Main Road.
@@ -261,7 +474,7 @@ export default function KayakaLanding() {
         {/* Amenities */}
         <section id="amenities" className="scroll-mt-20 mt-8 grid md:grid-cols-2 gap-6">
           <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h4 className="text-xl font-semibold">Amenities & Facilities</h4>
+            <h3 className="text-xl font-semibold">Amenities & Facilities</h3>
             <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600">
               <li>Basement parking</li>
               <li>2 Lifts (Primary + Commercial)</li>
@@ -271,12 +484,12 @@ export default function KayakaLanding() {
           </div>
 
           <div className="bg-white rounded-lg p-6 shadow-sm">
-            <h4 className="text-xl font-semibold">Technical & Structural</h4>
+            <h3 className="text-xl font-semibold">Technical & Structural</h3>
             <p className="text-gray-600 mt-2">
               Post-tension slab system enables column-free retail and office
               layouts and reduces effective beam depth. Typical beam thickness
               ~1.5 ft, clear height 10.5 ft. Detailed structural drawings and
-              load plans will be provided by the structural engineer.
+              load plans are available to shortlisted tenants on request.
             </p>
 
             <div className="mt-4">
@@ -284,10 +497,8 @@ export default function KayakaLanding() {
                 Available on request
               </div>
               <ul className="list-disc pl-5 text-gray-600 mt-2">
-                <li>Floor plans and carpet layouts</li>
-                <li>Elevation and 3D renders</li>
                 <li>Parking layout and service routes</li>
-                <li>Energy & sustainability notes</li>
+                <li>Power load and energy details</li>
               </ul>
             </div>
           </div>
@@ -295,28 +506,30 @@ export default function KayakaLanding() {
 
         {/* Floor Plans */}
         <section id="plans" className="scroll-mt-20 mt-10">
-          <h3 className="text-2xl font-semibold">Floor Plans</h3>
+          <h2 className="text-2xl font-semibold">Floor Plans</h2>
           <p className="text-gray-600 mt-2">
             Floor plans for each commercial level and ground floor.
           </p>
 
           <div className="mt-6 grid md:grid-cols-2 gap-6">
             <div className="bg-white p-4 rounded shadow-sm">
-              <h4 className="font-semibold mb-2">Ground Floor – 3100 sq ft</h4>
+              <h3 className="font-semibold mb-2">Ground Floor – 3100 sq ft</h3>
               <img
                 src={`${process.env.PUBLIC_URL}/images/ground_floor_plan.jpg`}
-                alt="Ground Floor Plan"
+                alt="Ground floor layout plan — 3100 sq ft commercial space"
+                loading="lazy"
                 className="w-full rounded border"
               />
             </div>
 
             <div className="bg-white p-4 rounded shadow-sm">
-              <h4 className="font-semibold mb-2">
+              <h3 className="font-semibold mb-2">
                 First & Second Floor – 3500 sq ft each
-              </h4>
+              </h3>
               <img
                 src={`${process.env.PUBLIC_URL}/images/first_second_floor.jpg`}
-                alt="First and Second Floor Plan"
+                alt="First and second floor layout plan — 3500 sq ft each"
+                loading="lazy"
                 className="w-full rounded border"
               />
             </div>
@@ -325,44 +538,48 @@ export default function KayakaLanding() {
 
         {/* Gallery */}
         <section id="gallery" className="scroll-mt-20 mt-10">
-          <h3 className="text-2xl font-semibold">Gallery</h3>
+          <h2 className="text-2xl font-semibold">Gallery</h2>
           <p className="text-gray-600 mt-2">
-            Elevation views of Kayaka — North, East, and NE Corner perspectives.
+            Elevation views of the building — North, East, and north-east
+            corner perspectives.
           </p>
 
           <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="rounded overflow-hidden shadow-sm bg-white p-2">
+            <figure className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
                 src={`${process.env.PUBLIC_URL}/images/North_Side.jpeg`}
-                alt="North_Side"
+                alt="North side elevation of the commercial building"
+                loading="lazy"
                 className="w-full h-64 object-cover rounded"
               />
-              <div className="mt-2 text-center text-sm text-gray-700">
+              <figcaption className="mt-2 text-center text-sm text-gray-700">
                 North Side Elevation
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="rounded overflow-hidden shadow-sm bg-white p-2">
+            <figure className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
                 src={`${process.env.PUBLIC_URL}/images/East_Side.jpeg`}
-                alt="East_Side"
+                alt="East side elevation of the commercial building"
+                loading="lazy"
                 className="w-full h-64 object-cover rounded"
               />
-              <div className="mt-2 text-center text-sm text-gray-700">
+              <figcaption className="mt-2 text-center text-sm text-gray-700">
                 East Side Elevation
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="rounded overflow-hidden shadow-sm bg-white p-2">
+            <figure className="rounded overflow-hidden shadow-sm bg-white p-2">
               <img
                 src={`${process.env.PUBLIC_URL}/images/NE_Corner_side.jpeg`}
-                alt="North-East Corner Elevation"
+                alt="North-east corner elevation of the commercial building"
+                loading="lazy"
                 className="w-full h-64 object-cover rounded"
               />
-              <div className="mt-2 text-center text-sm text-gray-700">
+              <figcaption className="mt-2 text-center text-sm text-gray-700">
                 NE Corner Elevation
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -371,9 +588,11 @@ export default function KayakaLanding() {
           id="contact"
           className="scroll-mt-20 mt-10 bg-white rounded-lg p-6 shadow-sm"
         >
-          <h3 className="text-2xl font-semibold">Enquire / Book a Visit</h3>
+          <h2 className="text-2xl font-semibold">Leasing Enquiry / Book a Visit</h2>
           <p className="text-gray-600 mt-2">
-            Fill the form to send us a WhatsApp message, or reach out directly.
+            Lease terms are tailored to each tenant. Tell us a little about
+            your business and we'll get back with a quote that fits your
+            needs.
           </p>
 
           <div className="mt-4 flex flex-wrap gap-3">
@@ -386,19 +605,19 @@ export default function KayakaLanding() {
               WhatsApp Us
             </a>
             <a
-              href={`mailto:${EMAIL}?subject=Kayaka%20Real%20Estate%20Enquiry`}
+              href={`mailto:${EMAIL}?subject=Commercial%20Space%20Leasing%20Enquiry`}
               className="px-5 py-3 bg-gray-700 text-white rounded-md inline-flex items-center gap-2"
             >
               Email Us
             </a>
             <a
-              href="tel:+919845465200"
+              href={`tel:+${PHONE1}`}
               className="px-5 py-3 bg-indigo-600 text-white rounded-md inline-flex items-center gap-2"
             >
               Call: 98454 65200
             </a>
             <a
-              href="tel:+919886366691"
+              href={`tel:+${PHONE2}`}
               className="px-5 py-3 bg-indigo-600 text-white rounded-md inline-flex items-center gap-2"
             >
               Call: 98863 66691
@@ -409,46 +628,12 @@ export default function KayakaLanding() {
             onSubmit={handleSubmit}
             className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"
           >
-            <input
-              name="name"
-              value={form.name}
+            <FormFields
+              form={form}
               onChange={handleChange}
-              className="p-3 border rounded"
-              placeholder="Full name"
-              required
-            />
-            <input
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              className="p-3 border rounded"
-              placeholder="Phone"
-              required
-            />
-            <input
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className="p-3 border rounded"
-              placeholder="Email"
-              required
-            />
-            <select
-              name="type"
-              value={form.type}
-              onChange={handleChange}
-              className="p-3 border rounded"
-            >
-              <option>Enquiry</option>
-              <option>Book Visit</option>
-            </select>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              className="md:col-span-2 p-3 border rounded"
-              placeholder="Message / Requirements"
-              rows={4}
+              idPrefix="main"
+              showType
+              showVisitDate={form.type === "Book a site visit"}
             />
 
             <div className="md:col-span-2 flex gap-3 items-center">
@@ -459,8 +644,8 @@ export default function KayakaLanding() {
                 Send via WhatsApp
               </button>
               {sent && (
-                <span className="text-sm text-green-600">
-                  Opening WhatsApp...
+                <span role="status" className="text-sm text-green-600">
+                  WhatsApp opened in a new tab — just press send.
                 </span>
               )}
             </div>
@@ -470,14 +655,14 @@ export default function KayakaLanding() {
         <footer className="mt-12 border-t pt-6 pb-4 text-sm text-gray-500">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <div className="font-semibold text-gray-700">Kaayaka</div>
-              <div className="mt-1">SMV Layout (AGS), Manganahalli Main Road, Bengaluru</div>
+              <div className="font-semibold text-gray-700">Commercial Space for Lease</div>
+              <div className="mt-1">AGS Layout, SMV Layout (BDA), Manganahalli Main Road, Bengaluru</div>
             </div>
             <div>
               <div className="font-semibold text-gray-700">Contact</div>
               <div className="mt-1 space-y-1">
-                <div><a href="tel:+919845465200" className="hover:text-indigo-600">+91 98454 65200</a></div>
-                <div><a href="tel:+919886366691" className="hover:text-indigo-600">+91 98863 66691</a></div>
+                <div><a href={`tel:+${PHONE1}`} className="hover:text-indigo-600">+91 98454 65200</a></div>
+                <div><a href={`tel:+${PHONE2}`} className="hover:text-indigo-600">+91 98863 66691</a></div>
                 <div><a href={`mailto:${EMAIL}`} className="hover:text-indigo-600">{EMAIL}</a></div>
               </div>
             </div>
@@ -491,17 +676,22 @@ export default function KayakaLanding() {
             </div>
           </div>
           <div className="mt-6 text-center text-gray-400">
-            © {new Date().getFullYear()} Kayaka — All rights reserved.
+            © {new Date().getFullYear()} — All rights reserved.
           </div>
         </footer>
       </main>
 
       {/* Booking Modal (simple) */}
       {showBooking && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
-          <div className="bg-white rounded-md p-6 w-full max-w-xl">
+        <div
+          className="fixed inset-0 z-40 bg-black/40 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="booking-modal-title"
+        >
+          <div className="bg-white rounded-md p-6 w-full max-w-xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-start">
-              <h4 className="text-lg font-semibold">Book a Visit / Reserve</h4>
+              <h3 id="booking-modal-title" className="text-lg font-semibold">Book a Site Visit</h3>
               <button
                 onClick={() => setShowBooking(false)}
                 className="text-gray-500"
@@ -517,39 +707,13 @@ export default function KayakaLanding() {
               }}
               className="mt-4 grid gap-3"
             >
-              <input
-                name="name"
-                value={form.name}
+              <FormFields
+                form={form}
                 onChange={handleChange}
-                className="p-3 border rounded"
-                placeholder="Full name"
-                required
+                idPrefix="modal"
+                showType={false}
+                showVisitDate
               />
-              <input
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                className="p-3 border rounded"
-                placeholder="Phone"
-                required
-              />
-              <input
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                className="p-3 border rounded"
-                placeholder="Email"
-                required
-              />
-              <select
-                name="type"
-                value={form.type}
-                onChange={handleChange}
-                className="p-3 border rounded"
-              >
-                <option>Book Visit</option>
-                <option>Reserve Space</option>
-              </select>
 
               <div className="flex justify-end gap-3 mt-2">
                 <button
